@@ -3,14 +3,16 @@ import StorePage from "./store/StorePage";
 import MarketPage from "./market/MarketPage";
 import WalletPage from "./wallet/WalletPage";
 import SettingsPage from "./settings/SettingsPage";
-import { ThemeProvider } from "./ThemeProvider";
+import Sidebar from "./sidebar/sidebar";
+
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <div id="App">
         <Router>
           <Navbar />
@@ -39,16 +41,11 @@ const pageMap: { label: string; path: string }[] = [
 
 const Navbar = () => {
   return (
-    <nav>
-      {pageMap.map((e) => (
-        <NavLink {...e} />
-      ))}
-    </nav>
+    <Sidebar /> 
   );
 };
 
 import { Button } from "@/components/ui/button";
-import { Sidebar } from "lucide-react";
 
 const NavLink = (props: { label: string; path: string }) => {
   return (
@@ -57,21 +54,3 @@ const NavLink = (props: { label: string; path: string }) => {
     </Link>
   );
 };
-
-const SideBarItem = (props: {
-  icon: React.ReactNode;
-  text: string;
-  active: boolean;
-  alert: boolean;
-}) => {
-  return <div></div>;
-};
-
-const x = (
-  <SideBarItem
-    icon={<div></div>}
-    text=""
-    active={false}
-    alert={true}
-  ></SideBarItem>
-);
